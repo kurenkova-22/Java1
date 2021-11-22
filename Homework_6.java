@@ -13,8 +13,8 @@ class Homework_6 {
         Animal[] animals = {cat, dog};
         for (Animal animal : animals) {
             System.out.println(animal);
-            System.out.println(animal.swim());
-            System.out.println(animal.run());
+            System.out.println(animal.swim(5));
+            System.out.println(animal.run(250));
         }
     }
 }
@@ -26,12 +26,12 @@ abstract class Animal {
         this.name = name;
     }
     
-    String run() {
-        return "run(unknow)";
+    String run(int length) {
+        return "run" + length;
     }
     
-    String swim() {
-        return "swim(unknow)";
+    String swim(int length) {
+        return "swim " + length;
     }
     
 }
@@ -43,18 +43,22 @@ class Dog extends Animal{
     }
     
     @Override
-    String run() {
-        return "run(500 m)";
+    String run(int length) {
+        if (length > 500)
+            length = 500;
+        return name + " run " + length;
     }
     
     @Override
-    String swim() {
-        return "swim(10 m)";
+    String swim(int length) {
+        if (length > 10)
+            length = 10;
+        return name + " swim " + length;
     }
     
     @Override
     public String toString () {
-        return "Name:" + name;
+        return "Dog's name:" + name;
     }
 }
 
@@ -65,17 +69,23 @@ class Cat extends Animal{
     }
     
     @Override
-    String run() {
-        return "run(200 m)";
+    String run(int length) {
+        if (length > 200)
+            length = 200;
+        return name + " run " + length;
+/*      if (length <= 200)
+            return name + " run " + length;
+        else 
+            return name + " can't run " + "> 200 m"; */
     }
     
     @Override
-    String swim() {
-        return "can't swim";
+    String swim(int length) {
+        return name + " can't swim";
     }
     
     @Override
     public String toString () {
-        return "Name:" + name;
+        return "Cat's name:" + name;
     }
 }
